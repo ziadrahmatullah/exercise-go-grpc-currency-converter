@@ -1,0 +1,34 @@
+proto < ../proto/currency_converter.proto
+@host=localhost:50051
+
+### Success
+GRPC /CurrencyConverter/ConvertCurrency
+{
+    "amount":44.444,
+    "sourceCurrency": "IDR",
+    "targetCurrency": "JPY"
+}
+
+### Invalid Body
+GRPC /CurrencyConverter/ConvertCurrency
+{
+    "amount":0,
+    "sourceCurrency": "IDR",
+    "targetCurrency": "JPY"
+}
+
+### Unknown Target
+GRPC /CurrencyConverter/ConvertCurrency
+{
+    "amount":44.444,
+    "sourceCurrency": "IDR",
+    "targetCurrency": "JPYYY"
+}
+
+### Unknown Source
+GRPC /CurrencyConverter/ConvertCurrency
+{
+    "amount":44.444,
+    "sourceCurrency": "IDRRRR",
+    "targetCurrency": "JPY"
+}

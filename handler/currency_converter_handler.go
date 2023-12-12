@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"context"
+
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/exercise-go-grpc-currency-converter/apperror"
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/exercise-go-grpc-currency-converter/appvalidator"
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/exercise-go-grpc-currency-converter/dto"
@@ -21,7 +23,7 @@ func NewCurrencyConverterHandler(u usecase.CurrencyConverterUsecase, valid appva
 	}
 }
 
-func (h *CurrencyConverterHandler) CurrencyConverter(req *pb.CurrencyConversionRequest) (*pb.CurrencyConversionResponse, error) {
+func (h *CurrencyConverterHandler) ConvertCurrency(ctx context.Context, req *pb.CurrencyConversionRequest) (*pb.CurrencyConversionResponse, error) {
 	currencyReq := dto.CurrencyConversionRequest{
 		Amount:         req.Amount,
 		SourceCurrency: req.SourceCurrency,
