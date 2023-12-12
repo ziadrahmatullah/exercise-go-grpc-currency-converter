@@ -33,4 +33,5 @@ func (ce *CustomError) ToErrorRes() ErrorRes {
 var (
 	ErrUnknownTarget = NewCustomError(int(codes.InvalidArgument), "unknown target")
 	ErrUnknownSource = NewCustomError(int(codes.InvalidArgument), "unknown source")
+	ErrInvalidBody   = NewCustomError(int(codes.InvalidArgument), "invalid body")
 )
